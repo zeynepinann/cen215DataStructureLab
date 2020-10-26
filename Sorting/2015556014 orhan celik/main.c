@@ -241,8 +241,6 @@ int main() {
     time = clock() - time;
     printf("%s\n", name1);
     printf("selection char sort time: %f\n", ((double)time) / CLOCKS_PER_SEC);
-
-
     //Bubble Sort
     int no2[] = { 2, 0, 1, 5, 5, 5, 6, 0, 1, 4 };
     char name2[] = "orhan celik"; 
@@ -257,11 +255,9 @@ int main() {
     bubbleSortChar(name2, charSize2);
     time = clock() - time;
     printf("%s\n", name2);
-    printf("bubble char sort time: %f\n", ((double)time) / CLOCKS_PER_SEC);
-
+    printf("bubble char sort time: %f\n", ((double)time) / CLOCKS_PER_SEC);  
 
     //Merge Sort
-
     int no3[] = { 2, 0, 1, 5, 5, 5, 6, 0, 1, 4 }; 
     char name3[] = "orhan celik";
     int n3 = sizeof(no3) / sizeof(no3[0]); 
