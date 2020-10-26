@@ -222,14 +222,11 @@ int main() {
     time = clock() - time;
     printArray(no, n); 
     printf("insertion sort time: %f\n", ((double)time) / CLOCKS_PER_SEC);
-    //start = end;
     insertionSortChar(name, charSize);
-    //end = clock();
     time = clock() - time;
     printf("%s\n", name);
-    //printf("insertion char sort time: %f\n", ((double)(end-start)) / CLOCKS_PER_SEC);
+   
     printf("insertion char sort time: %f\n", ((double)time) / CLOCKS_PER_SEC);
-
     //Selection Sort
     int no1[] = { 2, 0, 1, 5, 5, 5, 6, 0, 1, 4 }; 
     char name1[] = "orhan celik";
