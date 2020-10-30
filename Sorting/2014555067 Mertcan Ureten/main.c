@@ -8,10 +8,6 @@
 
 //Insertion Sort Algorithm
 
-void quickSort(){
-    //Abbas ELMAS
-}
-
 void insertionSort(int arr[], int n) 
 { 
     int i, key, j; 
