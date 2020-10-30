@@ -8,6 +8,10 @@
 
 //Insertion Sort Algorithm
 
+void quickSort(){
+    //Abbas ELMAS
+}
+
 void insertionSort(int arr[], int n) 
 { 
     int i, key, j; 
@@ -301,6 +305,7 @@ int main() {
     printf("%s\n", name2);
     printf("Running Time of Bubble Char Sort Is: %f\n", ((double)t) / CLOCKS_PER_SEC);
 
+    quickSort();
 
     //Merge Sort
 
