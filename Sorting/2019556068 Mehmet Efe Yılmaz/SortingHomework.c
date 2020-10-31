@@ -234,8 +234,10 @@ main()
 {
 
 
+
     int num1[50], num2[50], num3[50], num4[50], num5[50], num6[50], adressofletters1[50],
         adressofletters2[50], adressofletters3[50], adressofletters4[50], adressofletters5[50], adressofletters6[50];
+
 
     int number[] = { 2, 0, 1, 9, 5, 5, 6, 0, 6, 8 };
     char name[] = "Mehmet Efe Yilmaz";
@@ -252,6 +254,7 @@ main()
         num4[i] = number[i];
         num5[i] = number[i];
         num6[i] = number[i];
+
     }
 
     for (int i = 0; i < strsize; i++)
@@ -270,7 +273,7 @@ main()
         adressofletters6[i] = adressofletters[i];
     }
     printf("\nNumber: 2019556068");
-    printf("\nName: Mehmet Efe Yýlmaz\n\n");
+    printf("\nName: Mehmet Efe YÃ½lmaz\n\n");
     printf("Insertion Sort\n\n");
 
 
@@ -343,4 +346,6 @@ main()
 
 
     return 0;
+
 }
+
