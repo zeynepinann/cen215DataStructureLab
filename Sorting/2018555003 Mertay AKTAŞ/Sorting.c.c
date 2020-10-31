@@ -209,6 +209,7 @@ void bubble_sort_char(char array[], int size)
            if (array[j] > array[j+1])
                swap_char(&array[j], &array[j+1]);
 }
+<<<<<<< HEAD
 // Quick Sort
 void quickSort(int *array,int first,int last){
     int i; 
@@ -340,6 +341,8 @@ void heapSortChar (char *x, int size)
       heapify(x, 0, right);
    }
 }
+=======
+>>>>>>> ea33d98ca5e8a2ada509cf16c62695faa9eec449
 int main() {
  
     printf("Mertay AKTAS\n2018555003\n\n\n");
@@ -397,6 +400,7 @@ int main() {
      time123= clock() - time123;
     printf("%s\n", name);
     printf("bubble char sorting time: %f\n", ((double)time123) / CLOCKS_PER_SEC);
+<<<<<<< HEAD
     
      //Quick Sort
 	
@@ -420,5 +424,7 @@ int main() {
     printf("%s\n", name);
     printf("heap char sorting time: %f\n", ((double)time123) / CLOCKS_PER_SEC);
 	
+=======
+>>>>>>> ea33d98ca5e8a2ada509cf16c62695faa9eec449
     return 0;
 }
