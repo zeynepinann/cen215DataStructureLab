@@ -5,7 +5,7 @@
 
 /*
 	Number : 2018555065;
-	Name : Sehil ÜN;
+	Name : Sehil ÃœN;
 */
 
 void printFunc(int array[], int n)
