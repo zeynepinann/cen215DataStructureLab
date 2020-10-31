@@ -208,6 +208,140 @@ void merge_sort_char(char arr[], int x, int y)
     }
 }
 
+//QUICK SORT
+void quickSort(int *array,int first,int last){
+    int i; 
+    int j; 
+    int pivot; 
+    char temp; 
+    pivot=first; 
+   
+    
+    if(last>first){
+        pivot=first;
+        i=first;
+        j=last;
+        while (i<j){
+            while (array[i]<=array[pivot] && i<last && j>i){ 
+                i++;
+            }
+            while (array[j]>=array[pivot] && j>=first && j>=i){
+                j--;
+            }
+            if (j>i){ 
+                temp=array[i];
+                array[i]=array[j];
+                array[j]=temp;
+            }
+        }
+       
+        temp=array[j];
+        array[j]=array[pivot];
+        array[pivot]=temp;
+        quickSort(array,first,j-1);
+        quickSort(array,j+1,last);
+    }
+}
+void quickSortChar(char *array,char first,char last){
+    int i; 
+    int j; 
+    char pivot; 
+    int temp; 
+    pivot=first; 
+   
+    
+    if(last>first){
+        pivot=first;
+        i=first;
+        j=last;
+        while (i<j){
+            while (array[i]<=array[pivot] && i<last && j>i){ 
+                i++;
+            }
+            while (array[j]>=array[pivot] && j>=first && j>=i){
+                j--;
+            }
+            if (j>i){ 
+                temp=array[i];
+                array[i]=array[j];
+                array[j]=temp;
+            }
+        }
+       
+        temp=array[j];
+        array[j]=array[pivot];
+        array[pivot]=temp;
+        quickSort(array,first,j-1);
+        quickSort(array,j+1,last);
+    }
+}
+
+//HEAP SORT
+
+void heapSort (int *x, int size)
+{
+   int  left, right, temp;
+ 
+   if (size <= 1)
+      return;
+   left = size / 2;
+   right = size - 1;
+ 
+   while (--left >= 0)
+      heapify(x, left, right);
+ 
+   for (;;) {
+      temp = x[0];
+      x[0] = x[right];
+      x[right] = temp;
+      if (--right <= 0)
+         break;
+      heapify(x, 0, right);
+   }
+}
+
+
+void heapify(int *x, int left, int right)
+{
+   int temp, i;
+ 
+   i = left +left +1;
+    temp = x[left];
+ 
+   do {
+      if (i < right && x[i] < x[i+1])
+         i++;
+      if (temp >= x[i])
+         break;
+      x[left] = x[i];
+      left = i;
+      i = 2 * i + 1;
+   } while (i <= right);
+   x[left] = temp;
+}
+void heapSortChar (char *x, int size)
+{
+   int  left, right, temp;
+ 
+   if (size <= 1)
+      return;
+   left = size / 2;
+   right = size - 1;
+ 
+   while (--left >= 0)
+      heapify(x, left, right);
+ 
+   for (;;) {
+      temp = x[0];
+      x[0] = x[right];
+      x[right] = temp;
+      if (--right <= 0)
+         break;
+      heapify(x, 0, right);
+   }
+}
+
+
 int main() {
  
     clock_t time;
@@ -272,6 +406,27 @@ int main() {
     time = clock() - time;
     printf("%s\n", name);
     printf("MERGE SORT NAME TIME: %f\n", ((double)time) / CLOCKS_PER_SEC);
+    
+    //QUICK SORT
+    quickSort(ogr_no,0,n-1);
+    time = clock() - time;
+    printArray(ogr_no, n);
+    printf("QUICK SORT NUMBER TIME: %f\n", ((double)time) / CLOCKS_PER_SEC);
+    quickSortChar(name,0,char_size-99);
+    time = clock() - time;
+    printf("%s\n", name);
+    printf("QUICK SORT NAME TIME: %f\n", ((double)time) / CLOCKS_PER_SEC);   
+   
+    //HEAP SORT
+	
+    heapSort(ogr_no, n);
+    time = clock() - time;
+    printArray(ogr_no, n);
+    printf("HEAP SORT NUMBER TIME: %f\n", ((double)time) / CLOCKS_PER_SEC);
+    heapSortChar(name,0);
+    time = clock() - time;
+    printf("%s\n", name);
+    printf("HEAP SORT NAME TIME: %f\n", ((double)time) / CLOCKS_PER_SEC); 
 
     printf("\n NAME: RECEP BARAN BAGCI \n NUM : 2019555454");
     return 0;
