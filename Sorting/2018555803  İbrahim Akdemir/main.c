@@ -29,6 +29,20 @@ void merge_N(int* num, int l, int m, int r);
 void mergeSort_L(char* let, int i, int j);
 void merge_L(char* let, int l, int m, int r);
 
+//QuickSort Function
+
+void quickSort_N(int* num, int lw, int hg);
+int quickSortPart_N(int* num, int lw, int hg);
+void quickSort_L(char* let, int lw, int hg);
+int quickSortPart_L(char* let, int lw, int hg);
+
+//HeapSort Function
+
+void heapSort_N(int* num, int size);
+void heapSortFy_N(int* num, int size, int i);
+void heapSort_L(char* let, int size);
+void heapSortFy_L(char* let, int size, int i);
+
 //Swap Function
 
 void swap_N(int* num, int i, int j);
@@ -170,6 +184,63 @@ int main() {
 	printf("Sorted letters are :");
 	print_L(&let[0], size_L);
 	time_spent += (double)(end8 - begin8) / CLOCKS_PER_SEC;
+
+	printf("\nElapsed Time is %f seconds", time_spent);
+	
+	
+	//QuickSort 
+	
+	printf("\n\n\tQuick Sort\t\t\n");
+
+
+	rest_N(&schoolNumber[0], &num[0], size_N);
+	clock_t begin9 = clock();
+	quickSort_N(&num[0], 0, size_N - 1);
+	clock_t end9 = clock();
+	printf("\nSorted numbers are :");
+	print_N(&num[0], size_N);
+	time_spent += (double)(end9 - begin9) / CLOCKS_PER_SEC;
+
+	printf("\nElapsed Time is %f seconds", time_spent);
+
+	printf("\n");
+
+
+	rest_L(&name[0], &let[0], size_L);
+	clock_t begin10 = clock();
+	quickSort_L(&let[0], 0, size_L - 1);
+	clock_t end10 = clock();
+	printf("Sorted letters are : ");
+	print_L(&let[0], size_L);
+	time_spent += (double)(end10 - begin10) / CLOCKS_PER_SEC;
+
+	printf("\nElapsed Time is %f seconds", time_spent);
+
+	//HeapSort
+	 
+	printf("\n\n\tHeap Sort\t\t\n");
+
+
+	rest_N(&schoolNumber[0], &num[0], size_N);
+	clock_t begin11 = clock();
+	heapSort_N(&num[0], size_N);
+	clock_t end11 = clock();
+	printf("\nSorted numbers are :");
+	print_N(&num[0], size_N);
+	time_spent += (double)(end11 - begin11) / CLOCKS_PER_SEC;
+
+	printf("\nElapsed Time is %f seconds", time_spent);
+
+	printf("\n");
+
+
+	rest_L(&name[0], &let[0], size_L);
+	clock_t begin12 = clock();
+	heapSort_L(&let[0], size_L);
+	clock_t end12 = clock();
+	printf("Sorted letters are :");
+	print_L(&let[0], size_L);
+	time_spent += (double)(end12 - begin12) / CLOCKS_PER_SEC;
 
 	printf("\nElapsed Time is %f seconds", time_spent);
 
@@ -393,6 +464,110 @@ void merge_L(char* let, int l, int m, int r) {
 		k++;
 	}
 }
+
+
+
+//QuickSort	
+
+
+void quickSort_N(int* num, int lw, int hg) {
+	if (lw < hg) {
+		int pa = quickSortPart_N(num, lw, hg);
+		quickSort_N(num, lw, pa - 1);
+		quickSort_N(num, pa + 1, hg);
+	}
+}
+int quickSortPart_N(int* num, int lw, int hg) {
+	int j;
+	for (j = lw; j <= hg - 1; j++) {
+		if (num[j] < num[hg]) {
+			swap_N(num, j, hg);
+		}
+	}
+	swap_N(num, lw, hg);
+	return lw;
+}
+
+
+void quickSort_L(char* let, int lw, int hg) {
+	if (lw < hg) {
+		int pa = quickSortPart_L(let, lw, hg);
+		quickSort_L(let, lw, pa - 1);
+		quickSort_L(let, pa + 1, hg);
+	}
+}
+int quickSortPart_L(char* let, int lw, int hg) {
+	int j;
+	for (j = lw; j <= hg - 1; j++) {
+		if (let[j] < let[hg]) {
+			swap_L(let, j, hg);
+		}
+	}
+	swap_L(let, lw, hg);
+	return lw;
+}
+
+//HeapSort
+
+
+void heapSort_N(int* num, int size) {
+	int i;
+	for (i = size / 2 - 1; i >= 0; i--) {
+		heapSortFy_N(num, size, i);
+	}
+	for (i = size - 1; i >= 0; i--) {
+		swap_N(num, 0, i);
+		heapSortFy_N(num, i, 0);
+	}
+}
+void heapSortFy_N(int* num, int size, int i) {
+	int largest = i;
+	int left = 2 * i + 1;
+	int right = 2 * i + 2;
+
+	if (left < size && num[left] > num[largest]) {
+		largest = left;
+	}
+
+	if (right < size && num[right] > num[largest]) {
+		largest = right;
+	}
+
+	if (largest != i) {
+		swap_N(num,i,largest);
+		heapSortFy_N(num, size, largest);
+	}
+}
+void heapSort_L(char* let, int size) {
+	int i;
+	for (i = size / 2 - 1; i >= 0; i--) {
+		heapSortFy_L(let, size, i);
+	}
+	for (i = size - 1; i >= 0; i--) {
+		swap_L(let, 0, i);
+		heapSortFy_L(let, i, 0);
+	}
+}
+void heapSortFy_L(char* let, int size, int i) {
+	int largest = i;
+	int left = 2 * i + 1;
+	int right = 2 * i + 2;
+
+	if (left < size && let[left] > let[largest]) {
+		largest = left;
+	}
+
+	if (right < size && let[right] > let[largest]) {
+		largest = right;
+	}
+
+	if (largest != i) {
+		swap_L(let, i, largest);
+		heapSortFy_L(let, size, largest);
+	}
+	
+}
+
 
 //Swap
 
